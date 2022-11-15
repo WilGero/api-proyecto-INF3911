@@ -15,10 +15,10 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.use(fileUpload());
 app.use(cors(corsOptions));
 app.use(require('./routes/index'));
+app.use('/usr',require('./routes/usuario'));
+
 app.use('/postulante',require('./routes/postulante'));
 app.use('/convocatoria',require('./routes/convocatoria'));
-
-
 
 app.listen(process.env.PORT,()=>{
     console.log('Ya esta funcionando el servidor...');

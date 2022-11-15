@@ -1,4 +1,3 @@
-const mpostulante=require('../models/postulante');
 const mconvocatoria=require('../models/convocatoria');
 module.exports={
     listar:(req,res)=>{
