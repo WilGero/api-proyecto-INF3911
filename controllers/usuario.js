@@ -1,6 +1,36 @@
 const musuario=require('../models/usuario');
 const jwt = require('jsonwebtoken');
 module.exports={
+    modificar: (req, res) => {
+        const body = req.body;
+        musuario.modificar(body, (err, results) => {
+        if (err) return res.status(500).send("Error en la Base de Datos");
+        return res.json({
+            success:1,
+            data:results    
+        })
+        });
+        },
+    borrar: (req, res) => {
+        const body = req.body;
+        musuario.borrar(body.id, (err, results) => {
+        if (err) return res.status(500).send("Error en la Base de Datos");
+        return res.json({
+            success:1,
+            data:results    
+        })
+        });
+        },
+    agregar: (req, res) => {
+        const body = req.body;
+        musuario.agregar(body, (err, results) => {
+        if (err) return res.status(500).send("Error en la Base de Datos");
+        return res.json({
+            success:1,
+            data:results    
+        })
+        });
+        },
     listar:(req,res)=>{
         musuario.listar((err,results)=>{
             if (err){
@@ -15,6 +45,7 @@ module.exports={
     },
       login: (req, res) => {
             const body = req.body;
+            
             musuario.verifica(body, (err, results) => {
             if (err) return res.status(500).send("Error en la Base de Datos");
             if (results) {
